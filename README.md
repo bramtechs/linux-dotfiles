@@ -14,10 +14,20 @@ My work-in-progress [i3-wm]("https://i3wm.org/docs/userguide.html") configuratio
 - picom
 - nitrogen
 - xbacklight
-- google-chrome
+- nm-applet
+- playerctl
+- redshift
+
+## Applications with keybinding
+- firefox
 - ranger
 - xfce4-terminal
-- gnome-control-center
-- nm-applet
-- redshift
-- playerctl
+
+### Ranger
+
+```console
+$ pip install ueberzug
+$ sudo apt install libx11-dev libxtst-dev python3-docopt python3-xlib python3-pil python3-attr
+echo "set preview_images true" >> ~/.config/ranger/rc.conf
+echo "set preview_images_method ueberzug" >> ~/.config/ranger/rc.conf
+```
