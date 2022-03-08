@@ -1,5 +1,5 @@
 # i3-config
-My work-in-progress [i3-wm]("https://i3wm.org/docs/userguide.html") configuration
+My **work-in-progress** [i3-wm]("https://i3wm.org/docs/userguide.html") configuration
 
 ## Features
 - keyboard volume control

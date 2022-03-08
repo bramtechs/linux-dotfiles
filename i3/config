@@ -42,9 +42,12 @@ bindsym $mod+Ctrl+m exec pavucontrol
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
+# Enable soft touchpad
+exec_always --no-startup-id xinput set-prop 9 324 1
+
 # Start Applications
-bindsym $mod+w exec --no-startup-id firefox
-bindsym $mod+e exec --no-startup-id ranger
+bindsym $mod+w exec --no-startup-id google-chrome 
+bindsym $mod+e exec --no-startup-id xfce4-terminal -x ranger ~
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
