@@ -10,21 +10,28 @@ markup=pango
 [crypto]
 label=
 markup=pango
-interval=60
+interval=300
 instance=bitcoin
 command=~/.config/i3blocks-crypto/crypto EUR
 
 [crypto]
-label=
 markup=pango
-interval=60
-instance=bitcoin-cash
+interval=300
+instance=monero
 command=~/.config/i3blocks-crypto/crypto EUR
 
 [crypto]
 label=
 markup=pango
-interval=60
+interval=300
+instance=solana
+command=~/.config/i3blocks-crypto/crypto EUR
+
+
+[crypto]
+label=
+markup=pango
+interval=300
 instance=ethereum
 command=~/.config/i3blocks-crypto/crypto EUR
 
