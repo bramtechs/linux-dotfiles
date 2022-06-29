@@ -1,6 +1,6 @@
 set number
 set nowrap
-set relativenumber
+"set relativenumber
 set tabstop=4 softtabstop=4
 set expandtab
 set smartindent
@@ -20,8 +20,8 @@ set nobackup
 
 set incsearch
 set ignorecase
-set signcolumn=yes
-set colorcolumn=80
+"set signcolumn=yes
+"set colorcolumn=80
 set cmdheight=2
 
 set updatetime=50

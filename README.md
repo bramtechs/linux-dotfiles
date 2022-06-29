@@ -1,4 +1,4 @@
-# i3-config
+# i3-config + dotfiles
 My **work-in-progress** [i3-wm]("https://i3wm.org/docs/userguide.html") configuration
 
 ## Features
@@ -26,8 +26,21 @@ My **work-in-progress** [i3-wm]("https://i3wm.org/docs/userguide.html") configur
 ### Ranger
 
 ```console
-$ pip install ueberzug
-$ sudo apt install libx11-dev libxtst-dev python3-docopt python3-xlib python3-pil python3-attr
+sudo apt install libx11-dev libxtst-dev python3-docopt python3-xlib python3-pil python3-attr
+pip install ueberzug
 echo "set preview_images true" >> ~/.config/ranger/rc.conf
 echo "set preview_images_method ueberzug" >> ~/.config/ranger/rc.conf
+```
+## Cloning dotfiles
+```console
+cd ~/.config && \
+git clone --recursive git@github.com:bramtechs/linux-dotfiles.git temp && \
+cd temp && \
+cp -r .git .gitmodules * .. && \
+rm -rf temp
+```
+
+## Updating bashrc
+```console
+echo 'PATH="$PATH:/home/bram/.local/bin:/home/bram/scripts:/home/bram/scripts/private"' >> ~/.bashrc
 ```
