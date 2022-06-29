@@ -13,10 +13,16 @@ My **work-in-progress** [i3-wm]("https://i3wm.org/docs/userguide.html") configur
 - dmenu (suckless-tools)
 - picom
 - nitrogen
-- xbacklight
+- light 
 - nm-applet
 - playerctl
 - redshift
+
+## Make screen brightness work
+Ádd your user to the 'video' group.
+```console
+sudo usermod -a -G video $USER
+```
 
 ## Applications with keybinding
 - firefox

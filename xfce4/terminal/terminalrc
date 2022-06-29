@@ -29,4 +29,5 @@ MiscShowUnsafePasteDialog=TRUE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 BackgroundDarkness=0,730000
+FontName=Liberation Mono 14
 
