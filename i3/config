@@ -49,7 +49,7 @@ exec_always --no-startup-id xinput set-prop 10 320 1
 exec --no-startup-id ~/scripts/nowebcam
 
 # Start Applications
-bindsym $mod+w exec --no-startup-id google-chrome 
+bindsym $mod+w exec --no-startup-id firefox-esr 
 bindsym $mod+e exec --no-startup-id xfce4-terminal -x ranger ~
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w

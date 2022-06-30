@@ -32,3 +32,8 @@ noremap p "+p
 
 colorscheme torte
 
+call plug#begin()
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+call plug#end()

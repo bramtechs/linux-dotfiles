@@ -1,5 +1,5 @@
 # i3-config + dotfiles
-My **work-in-progress** [i3-wm]("https://i3wm.org/docs/userguide.html") configuration
+My **work-in-progress** [i3-wm](https://i3wm.org/docs/userguide.html) + [neovim](https://neovim.io) configuration
 
 ## Features
 - keyboard volume control
@@ -17,6 +17,14 @@ My **work-in-progress** [i3-wm]("https://i3wm.org/docs/userguide.html") configur
 - nm-applet
 - playerctl
 - redshift
+- pavucontrol
+
+### Installation
+```console
+sudo apt install i3 i3blocks i3lock-fancy pavucontrol picom nitrogen light playerctl redshift -y && \
+cd .config && \
+git clone "https://github.com/hastinbe/i3-volume"
+```
 
 ## Make screen brightness work
 Ádd your user to the 'video' group.
@@ -49,4 +57,23 @@ rm -rf temp
 ## Updating bashrc
 ```console
 echo 'PATH="$PATH:/home/bram/.local/bin:/home/bram/scripts:/home/bram/scripts/private"' >> ~/.bashrc
+```
+
+## Neovim
+### Install vim-plug
+```console
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
+## Specific for my laptop hardware 
+
+### Install rtl8821ce Wifi driver (Debian 11)
+```console
+sudo apt install bc module-assistant build-essential dkms && \
+mkdir -p dev && \
+cd dev && \
+git clone https://github.com/tomaspinho/rtl8821ce.git && \
+cd rtl8821ce  && \
+sudo ./dkms-install.sh
 ```
