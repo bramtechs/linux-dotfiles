@@ -20,11 +20,24 @@ My **work-in-progress** [i3-wm](https://i3wm.org/docs/userguide.html) + [neovim]
 - redshift
 - pavucontrol
 
-### Installation
+## Installation
 ```console
 sudo apt install i3 i3blocks i3lock-fancy lm-sensors pavucontrol picom nitrogen light playerctl redshift -y && \
 cd .config && \
 git clone "https://github.com/hastinbe/i3-volume"
+```
+
+Choose public or private repo
+```console
+git clone --recursive git@github.com:bramtechs/linux-dotfiles.git temp
+
+git clone https://github.com/bramtechs/linux-dotfiles.git temp
+```
+
+```console
+cd temp && \
+cp -r .git .gitmodules * .. && \
+rm -rf temp
 ```
 
 ## Make screen brightness work
@@ -48,11 +61,6 @@ echo "set preview_images_method ueberzug" >> ~/.config/ranger/rc.conf
 ```
 ## Cloning dotfiles
 ```console
-cd ~/.config && \
-git clone --recursive git@github.com:bramtechs/linux-dotfiles.git temp && \
-cd temp && \
-cp -r .git .gitmodules * .. && \
-rm -rf temp
 ```
 
 ## Updating bashrc
