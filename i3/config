@@ -56,6 +56,9 @@ bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
+# show screenfetch at login 
+exec --no-startup-id xfce4-terminal -e ~/scripts/welcome
+
 focus_follows_mouse yes
 
 # change focus
