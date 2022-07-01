@@ -1,7 +1,10 @@
 set number
 set nowrap
+set linebreak
+
 "set relativenumber
 set tabstop=4 softtabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
 set exrc "auto sourcing of init.vim files
@@ -30,26 +33,41 @@ set shortmess+=c
 
 let mapleader = " " 
 
+" allow traversal of wrapped lines
+noremap j gj
+noremap k gk
+
 nnoremap <leader>ff :FZF<CR>
-nnoremap <F5> :!make run<CR>
+nnoremap <F5> :!make<CR>
 nnoremap <F2> :tabedit ~/.config/nvim/init.vim<CR>
 nnoremap <A-j> :tabprevious<CR>
 nnoremap <A-k> :tabnext<CR>
 nnoremap <leader><F2> :so $MYVIMRC<CR>
 tnoremap <leader><Esc> <C-\><C-n>
 
+autocmd FileType markdown setlocal spell spelllang=en_us
+
 call plug#begin()
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 call plug#end()
 
 colorscheme gruvbox 
+
+" markdown specific
+runtime markdown
+
+" golang specific
+autocmd BufWritePre *.go :silent! lua require('go.format').goimport()
 
 " java specific
 "
@@ -86,7 +104,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <leader>k :call ShowDocumentation()<CR>
+nnoremap <leader>m :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
