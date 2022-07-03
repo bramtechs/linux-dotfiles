@@ -90,7 +90,7 @@ interval=10
 
 [bandwidth]
 #instance=eth0
-interval=10
+interval=1
 separator=true
 
 # CPU usage
@@ -105,8 +105,6 @@ separator=true
 [temperature]
 label=TEMP
 interval=5
-
-#interval=10
 
 # Battery indicator
 #

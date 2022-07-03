@@ -27,11 +27,13 @@ set ignorecase
 set signcolumn=yes
 "set colorcolumn=80
 set cmdheight=2
+set laststatus=2
 
 set updatetime=300
 set shortmess+=c
 
 let mapleader = " " 
+
 
 " allow traversal of wrapped lines
 noremap j gj
@@ -43,7 +45,10 @@ nnoremap <F2> :tabedit ~/.config/nvim/init.vim<CR>
 nnoremap <A-j> :tabprevious<CR>
 nnoremap <A-k> :tabnext<CR>
 nnoremap <leader><F2> :so $MYVIMRC<CR>
+nnoremap <leader>F :Format<CR>
 tnoremap <leader><Esc> <C-\><C-n>
+
+nnoremap <leader>td :tabedit TODO.md<CR> 
 
 autocmd FileType markdown setlocal spell spelllang=en_us
 
@@ -51,17 +56,42 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'EdenEast/nightfox.nvim'
 Plug 'morhetz/gruvbox'
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'ray-x/go.nvim'
 Plug 'ray-x/guihua.lua'
 
+Plug 'vim-scripts/vim-auto-save'
+
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" nerdtree
+Plug 'preservim/nerdtree'
+
+Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
 
-colorscheme gruvbox 
+colorscheme nightfox 
+
+" nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" auto save
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save_silent = 1  " do not display the auto-save notification
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " markdown specific
 runtime markdown
