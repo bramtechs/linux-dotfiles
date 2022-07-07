@@ -2,7 +2,7 @@ set number
 set nowrap
 set linebreak
 
-"set relativenumber
+set relativenumber
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -39,14 +39,24 @@ let mapleader = " "
 noremap j gj
 noremap k gk
 
-nnoremap <leader>ff :FZF<CR>
+nnoremap <leader>ff :GFiles<CR>
+nnoremap <leader>fF :Files<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fc :Commands<CR>
+nnoremap <leader>fL :Lines<CR>
+nnoremap <leader>fl :BLines<CR>
+
 nnoremap <F5> :!make<CR>
 nnoremap <F2> :tabedit ~/.config/nvim/init.vim<CR>
 nnoremap <A-j> :tabprevious<CR>
 nnoremap <A-k> :tabnext<CR>
+nnoremap <A-n> :tabnew<CR>
 nnoremap <leader><F2> :so $MYVIMRC<CR>
 nnoremap <leader>F :Format<CR>
 tnoremap <leader><Esc> <C-\><C-n>
+
+nnoremap <F6> :vsplit<CR>
+nnoremap <leader><F6> :split<CR>
 
 nnoremap <leader>td :tabedit TODO.md<CR> 
 
@@ -59,7 +69,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'EdenEast/nightfox.nvim'
 Plug 'morhetz/gruvbox'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()}}
+Plug 'junegunn/fzf.vim'
 
 Plug 'ray-x/go.nvim'
 Plug 'ray-x/guihua.lua'
@@ -68,6 +79,8 @@ Plug 'vim-scripts/vim-auto-save'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
+Plug 'hoob3rt/lualine.nvim'
+
 " nerdtree
 Plug 'preservim/nerdtree'
 
@@ -75,6 +88,18 @@ Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
 
+let g:seiya_auto_enable=1
+
+lua << END
+require('lualine').setup()
+END
+
+"colorscheme nightfox 
+highlight Normal ctermbg=NONE guibg=NONE
+augroup user_colors
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+augroup END
 colorscheme nightfox 
 
 " nerdtree
@@ -82,6 +107,12 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+" switch windows
+nnoremap <C-z> <C-W>
+
+" FZF settings
+
 
 " auto save
 let g:auto_save = 1  " enable AutoSave on Vim startup
