@@ -80,6 +80,7 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " nerdtree
 Plug 'preservim/nerdtree'

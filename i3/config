@@ -46,17 +46,24 @@ bindsym XF86MonBrightnessDown exec "light -U 10"
 # Enable soft touchpad
 exec_always --no-startup-id xinput set-prop 10 320 1
 
+# set a random wallpaper
+bindsym $mod+o exec --no-startup-id ~/scripts/cyclebg
+bindsym $mod+Shift+o exec --no-startup-id ~/scripts/setbgset
+
 # Disable webcam on startup
 exec --no-startup-id ~/scripts/nowebcam
 
 # Start Applications
-bindsym $mod+w exec --no-startup-id /opt/ungoogled-chromium/chrome 
-bindsym $mod+Shift+w exec --no-startup-id firefox-esr 
+bindsym $mod+Shift+w exec --no-startup-id /opt/ungoogled-chromium/chrome 
+bindsym $mod+w exec --no-startup-id firefox-esr 
 bindsym $mod+e exec --no-startup-id xfce4-terminal -x ranger ~
 bindsym Print exec --no-startup-id scrot -f
 bindsym $mod+Print --release exec --no-startup-id scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id scrot -s
+bindsym $mod+Shift+Print --release exec --no-startup-id exec ~/scripts/rectprint
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# switch between keyboard layouts
+bindsym $mod+Ctrl+k --release exec --no-startup-id ~/scripts/keybinding 
 
 # show screenfetch at login 
 exec --no-startup-id xfce4-terminal -e ~/scripts/welcome
@@ -91,6 +98,10 @@ bindsym $mod+Shift+Right move right
 workspace_auto_back_and_forth no 
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+# swith workspace between monitors
+bindsym $mod+x move workspace to output left
+bindsym $mod+Shift+x move workspace to output right 
 
 # split orientation
 bindsym $mod+Control+h split h
@@ -138,7 +149,7 @@ set $ws3 3:📜 3 Code
 set $ws4 4:⚙️  4 Bash
 set $ws5 5:🖌️ 5 Art
 set $ws6 6:🎵 6 Music 
-set $ws7 7
+set $ws7 7:🎮 7 Gaming
 set $ws8 8
 set $ws9 9
 
@@ -176,6 +187,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
+for_window [title="SpaceGame"] floating enable
+for_window [title="Debugger"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="fpakman"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
@@ -213,15 +226,14 @@ bindsym $mod+Shift+Control+r restart
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id i3lock-fancy, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
