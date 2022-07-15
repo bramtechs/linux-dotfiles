@@ -82,9 +82,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
-" nerdtree
-Plug 'preservim/nerdtree'
-
 Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
@@ -92,7 +89,16 @@ call plug#end()
 let g:seiya_auto_enable=1
 
 lua << END
-require('lualine').setup()
+require('lualine').setup {
+    sections = {
+        lualine_c = {
+            {
+                'filename',
+                path = 3,
+            }
+        }
+    }
+}
 END
 
 "colorscheme nightfox 
@@ -103,27 +109,14 @@ augroup user_colors
 augroup END
 colorscheme nightfox 
 
-" nerdtree
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-
 " switch windows
 nnoremap <C-z> <C-W>
-
-" FZF settings
-
 
 " auto save
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 let g:auto_save_silent = 1  " do not display the auto-save notification
-
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " markdown specific
 runtime markdown
